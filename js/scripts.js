@@ -35,43 +35,68 @@ isThisGmailAdress("cliente1@gmail.com")
 
 //4️⃣ Macarena necesita generar un identificador único para cada usuario. Recibe un array con nombre y apellido, (por ejemplo: ['Enrique Sofresco', 'Esther Colero', 'Leandro Gado']) y debe imprimir las dos primeras letras de cada nombre y de cada apellido en mayúsculas, seguidas de un número aleatorio entre 10 y 99.
 
-const identifyUserName =()=>{
-    const name1=['Enrique','Sofresco'];
-    const name2=['Esther','Colero'];
-    const name3=['Leandro','Gabo'];
-    // const nameList=[name1, name2, name3];
+const extractTwoFirstLetter=(fullname)=>{ //extraer las 2 primeras letras, las pasa a mayusculas
+    const letters=
+    fullname.substring(0,fullname.indexOf(" ")).chartAt(0).toUpperCase() + // primera letra del nombre //lee posicion 0 de la palabra="enrique sofresco". ".substring" coge la primer palabra, y lo pasa a mayusculas
+    fullname.substring(fullname.indexOf(" ")).chartAt(1).toUpperCase() + // segunda letra del nombre 
+
+    fullname.substring(fullname.indexOf(" ")+1).chartAt(0).toUpperCase() + // primera letra del apellido
+
+    fullname.substring(fullname.indexOf(" ")+2).chartAt(0).toUpperCase(); // segunda letra del apellido
+
+    return letters; //junta todas las constantes y las guarda para después
+};
+const identifyUserName =(name)=>{
+    const firstName = name[0].substring(0,name[0].indexOf(" ")).chartAt(0); //lee posicion 0 del primer array="enrique sofresco". ".substring" coge el pedazo del array, o sea de la posicion 0 a el espacio)
+    const firstSurname = name[0].substring(name[0].indexOf(" ")+1).chartAt(0); //agrego+1 para que salete el espacio y no lo considere en el substring
+
+    const secondName = name[1].substring(0,name[1].indexOf(" ")).chartAt(0);
+    const secondSurname = name[1].substring(name[1].indexOf(" ")+1).chartAt(0);
+
+    const thirdName = name[2].substring(0,name[2].indexOf(" ")).chartAt(0);
+    const thirdSurname = name[2].substring(name[2].indexOf(" ")+1).chartAt(0);
+
     const aleatoryNumber=Math.floor(Math.random()*(99-10)+10);
-    //extraer una por una las palabras y sacar constante de numros aleatorias
+    // //extraer una por una las palabras y sacar constante de numeros aleatorias
     
-    console.log(name1[0].slice(0,2).toUpperCase() + name1[1].slice(0,2).toUpperCase() + aleatoryNumber); //decirle que parta desde posicion2 en ambas palabras y agregue el numero aleatorio
+    console.log(
+        firstName.slice(0,2).toUpperCase() + firstSurname.slice(0,2).toUpperCase() + aleatoryNumber); //decirle que parta desde posicion2 en ambas palabras y agregue el numero aleatorio
 
-    console.log(name2[0].slice(0,2).toUpperCase() + name2[1].slice(0,2).toUpperCase() + aleatoryNumber); 
+    // console.log(name2[0].slice(0,2).toUpperCase() + name2[1].slice(0,2).toUpperCase() + aleatoryNumber); 
 
-    console.log(name3[0].slice(0,2).toUpperCase() + name3[1].slice(0,2).toUpperCase() + aleatoryNumber); 
+    // console.log(name3[0].slice(0,2).toUpperCase() + name3[1].slice(0,2).toUpperCase() + aleatoryNumber); 
 }
 
-identifyUserName('Enrique Sofresco','Esther Colero', 'Leandro Gado')
+identifyUserName(['Enrique Sofresco','Esther Colero', 'Leandro Gado'])
 //ENSO8
 
 //5️⃣ Abby encontró una caja fuerte con un código de acceso en un array de cuatro dígitos, por ejemplo: [1, 5, 3, 8]. Si la suma del primer y el último número es par, imprimirá "Acceso concedido", si no, "Acceso denegado".
 
-const accessCodeCorrect =()=>{
-    const code=[1,5,3,8];
-
+const accessCodeCorrect =(code)=>{
+    const code=[1,5,3,8]; 
     if((code[0]+code[3])%2===0){
         console.log("Acceso Concebido")
     } else {
         console.log("Acesso Denegado")
-    }
+    // } FORMA ESPECIFICA PARA 4 DIGITOS
+
+    // //FORMA GENERAL PARA MAS DIGITOS
+    // const accessCodeCorrect =(numbers)=>{
+    // if((numbers[0]+numbers[3])%2===0){
+    //     console.log("Acceso Concebido")
+    //     } else {
+    //     console.log("Acesso Denegado")
+
+    
 }
 
-accessCodeCorrect();
+accessCodeCorrect([1, 5, 3, 8]);
 
 //6️⃣ Camila quiere generar dos números aleatorios entre 1 y 100 y determinar cuál es el mayor. Después los guardará en un array poniendo en la primera posición el mayor y en segunda posición el menor. Si son iguales, imprimirá "Empate", si no, imprimirá el array.
 
 const randomNumberGenerator=( emptyArray )=>{
-    const number1=Math.floor(Math.random()*100);
-    const number2=Math.floor(Math.random()*100);
+    const number1=Math.floor(Math.random()*100);//5
+    const number2=Math.floor(Math.random()*100);//8
 
     if (number1>number2){
         emptyArray.unshift(number1); //paso al principio el 1
