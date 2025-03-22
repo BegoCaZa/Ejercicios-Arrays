@@ -13,7 +13,7 @@ whosInThisList("Julian")
 const isTheProductAvailable = (product)=> {
     const productList=["Camiseta","Pantalón","Gorra","Zapatos"];
     
-    productList.includes(product) ? console.log("El prducto está en la posicón " + productList.indexOf(product)) : console.log("Producto no disponible")
+    productList.includes(product) ? console.log("El producto está en la posicón " + productList.indexOf(product)) : console.log("Producto no disponible")
 }
 
 isTheProductAvailable("Gorra")
@@ -24,7 +24,7 @@ isTheProductAvailable("Abrigo")
 const isThisGmailAdress = ()=> {
     const emailList=["cliente1@gmail.com","cliente2@hotmail.com","cliente3@gmail.com"];
 
-    if(emailList[0].includes("gmail") || emailList[1].includes("gmail") || emailList[2].includes("gmail")) { 
+    if(emailList[0].includes("gmail") || emailList[1].includes("gmail") || emailList[2].includes("gmail")) { //al menos UNO de esos, tiene gmail
         console.log("Correo de Gmail encontrado")
     } else {
         console.log("No hay correos de Gmail")
@@ -35,36 +35,24 @@ isThisGmailAdress("cliente1@gmail.com")
 
 //4️⃣ Macarena necesita generar un identificador único para cada usuario. Recibe un array con nombre y apellido, (por ejemplo: ['Enrique Sofresco', 'Esther Colero', 'Leandro Gado']) y debe imprimir las dos primeras letras de cada nombre y de cada apellido en mayúsculas, seguidas de un número aleatorio entre 10 y 99.
 
-const extractTwoFirstLetter=(fullname)=>{ //extraer las 2 primeras letras, las pasa a mayusculas
+const extractTwoFirstLetter=(fullname)=>{ //PRIMERO UNA FUNCION para extraer las 2 primeras letras, las pasa a mayusculas 
     const letters=
-    fullname.substring(0,fullname.indexOf(" ")).chartAt(0).toUpperCase() + // primera letra del nombre //lee posicion 0 de la palabra="enrique sofresco". ".substring" coge la primer palabra, y lo pasa a mayusculas
-    fullname.substring(fullname.indexOf(" ")).chartAt(1).toUpperCase() + // segunda letra del nombre 
+    fullname.substring(0,fullname.indexOf(" ")).charAt(0).toUpperCase() + // primera letra del nombre //lee posicion 0 de la palabra="enrique sofresco". ".substring" coge la primer palabra, y lo pasa a mayusculas
+    fullname.substring(0,fullname.indexOf(" ")).charAt(1).toUpperCase() + // segunda letra del NOMBRE 
 
-    fullname.substring(fullname.indexOf(" ")+1).chartAt(0).toUpperCase() + // primera letra del apellido
+    fullname.substring(fullname.indexOf(" ")+1).charAt(0).toUpperCase() + // primera letra del APELLIDO
 
-    fullname.substring(fullname.indexOf(" ")+2).chartAt(0).toUpperCase(); // segunda letra del apellido
+    fullname.substring(fullname.indexOf(" ")+2).charAt(0).toUpperCase(); // segunda letra del APELLIDO
 
     return letters; //junta todas las constantes y las guarda para después
 };
-const identifyUserName =(name)=>{
-    const firstName = name[0].substring(0,name[0].indexOf(" ")).chartAt(0); //lee posicion 0 del primer array="enrique sofresco". ".substring" coge el pedazo del array, o sea de la posicion 0 a el espacio)
-    const firstSurname = name[0].substring(name[0].indexOf(" ")+1).chartAt(0); //agrego+1 para que salete el espacio y no lo considere en el substring
 
-    const secondName = name[1].substring(0,name[1].indexOf(" ")).chartAt(0);
-    const secondSurname = name[1].substring(name[1].indexOf(" ")+1).chartAt(0);
+const identifyUserName =(names)=>{
+    const firstName = extractTwoFirstLetter(names[0]) + Math.floor(Math.random()*(99-10)+10); // genera una constante con las 2 primeras letras del NOMBRE y APELLIDO usando la FUNCION anterior y agrega un numero aleatorio
+    const secondName = extractTwoFirstLetter(names[1]) + Math.floor(Math.random()*(99-10)+10);
+    const thirdName = extractTwoFirstLetter(names[2]) + Math.floor(Math.random()*(99-10)+10);
 
-    const thirdName = name[2].substring(0,name[2].indexOf(" ")).chartAt(0);
-    const thirdSurname = name[2].substring(name[2].indexOf(" ")+1).chartAt(0);
-
-    const aleatoryNumber=Math.floor(Math.random()*(99-10)+10);
-    // //extraer una por una las palabras y sacar constante de numeros aleatorias
-    
-    console.log(
-        firstName.slice(0,2).toUpperCase() + firstSurname.slice(0,2).toUpperCase() + aleatoryNumber); //decirle que parta desde posicion2 en ambas palabras y agregue el numero aleatorio
-
-    // console.log(name2[0].slice(0,2).toUpperCase() + name2[1].slice(0,2).toUpperCase() + aleatoryNumber); 
-
-    // console.log(name3[0].slice(0,2).toUpperCase() + name3[1].slice(0,2).toUpperCase() + aleatoryNumber); 
+    console.log(firstName,secondName,thirdName);
 }
 
 identifyUserName(['Enrique Sofresco','Esther Colero', 'Leandro Gado'])
@@ -72,23 +60,22 @@ identifyUserName(['Enrique Sofresco','Esther Colero', 'Leandro Gado'])
 
 //5️⃣ Abby encontró una caja fuerte con un código de acceso en un array de cuatro dígitos, por ejemplo: [1, 5, 3, 8]. Si la suma del primer y el último número es par, imprimirá "Acceso concedido", si no, "Acceso denegado".
 
-const accessCodeCorrect =(code)=>{
-    const code=[1,5,3,8]; 
-    if((code[0]+code[3])%2===0){
-        console.log("Acceso Concebido")
-    } else {
-        console.log("Acesso Denegado")
-    // } FORMA ESPECIFICA PARA 4 DIGITOS
+// const accessCodeCorrect =()=>{
+//     // const code=[1,5,3,8]; 
+//     // if((code[0]+code[3])%2===0){
+//     //     console.log("Acceso Concebido")
+//     // } else {
+//     //     console.log("Acesso Denegado");
+//     // } FORMA ESPECIFICA PARA 4 DIGITOS
 
-    // //FORMA GENERAL PARA MAS DIGITOS
-    // const accessCodeCorrect =(numbers)=>{
-    // if((numbers[0]+numbers[3])%2===0){
-    //     console.log("Acceso Concebido")
-    //     } else {
-    //     console.log("Acesso Denegado")
-
-    
+    //FORMA GENERAL PARA MAS DIGITOS
+const accessCodeCorrect =(numbers)=>{
+    if((numbers[0] + numbers[numbers.length-1])%2===0) { //numero en posicion 0 y numero en la ultima posicion (largo del array-1)
+        console.log("Acceso Concebido");
+        } else {
+        console.log("Acesso Denegado");
 }
+    };
 
 accessCodeCorrect([1, 5, 3, 8]);
 
@@ -112,7 +99,7 @@ const randomNumberGenerator=( emptyArray )=>{
         console.log(emptyArray)
     }
     }
-randomNumberGenerator([]); //no se si funciona
+randomNumberGenerator([]); //emptyarray sirve para guardar la informacion y luego mostrarla
 
 //7️⃣ Bego está calculando descuentos para varios clientes. Recibe un array con tres precios originales ([120, 75, 40]). Para cada precio, genera un número aleatorio entre 1 y 100. Si el número es menor que 50, aplica un 10% de descuento. Si es mayor o igual a 50, aplica un 20%. Debe imprimir el precio original, el número generado y el precio final con descuento para cada uno.
 
@@ -127,11 +114,11 @@ const applyDiscount=()=>{
     const aleatoryNumber2=Math.floor(Math.random()*101);
     const aleatoryNumber3=Math.floor(Math.random()*101);
 
-
+//primer numero
     if (aleatoryNumber1<50){
-        console.log( price[0] + " | Número Generado" + aleatoryNumber1 + " |Precio final: " + (price[0]*.10) + " (10% de descuento)");
+        console.log( price[0] + " | Número Generado " + aleatoryNumber1 + " |Precio final: " + (price[0]*.10) + " (10% de descuento)");
     } else if (aleatoryNumber1>=50) {
-        console.log( price[0] + " | Número Generado" + aleatoryNumber1 + " |Precio final: " + (price[0]*.20) + " (20% de descuento)")
+        console.log( price[0] + " | Número Generado " + aleatoryNumber1 + " |Precio final: " + (price[0]*.20) + " (20% de descuento)")
 }
 //segundo numero
 if (aleatoryNumber2<50){
@@ -149,3 +136,95 @@ if (aleatoryNumber3<50){
     }
 
     applyDiscount();
+
+
+ //8️⃣ Sabrina está en un restaurante con dos amigos. Recibe un array con tres cuentas, por ejemplo: [120, 75, 93]. Cada cuenta debe dividirse entre 3 para pagar de manera justa. Si el resultado de la división es impar, debe redondearse al número par más cercano. Sabrina debe imprimir el precio original, el precio dividido y el precio final (redondeado si es necesario) para cada cuenta.
+
+// Ejemplo de cómo debería verse el resultado:
+// Cuenta original: 120 | Dividido: 40 | Precio final: 40
+// Cuenta original: 75 | Dividido: 25 | Precio final: 26 (Redondeado al número par más cercano)
+// Cuenta original: 93 | Dividido: 31 | Precio final: 32 (Redondeado al número par más cercano)
+
+// const splitBills =(bills)=>{
+//     //por cada cuenta
+//     const bill1= bills[0]/3;
+//     const bill1Final=
+
+//     if (bill1%2!==0){
+//         bill1Final=Math.round(bill1);
+//     }else{
+//         bill1Final=bill1;
+//     }
+
+//     console.log(bill1Final);
+
+// };
+
+// splitBills([120,75,93]);
+
+//9️⃣ Macarena quiere calcular la edad de tres clientes. Recibe un array con tres años de nacimiento entre 1950 y 2010. Sabiendo que estamos en el año 2025, debe calcular la edad de cada uno y determinar si al menos uno es mayor de 18. Si hay al menos un cliente mayor de edad, imprimirá "Hay un cliente mayor de edad", si no, "Todos son menores de edad".
+
+const calculateAges =(years)=>{ //como yo le dare los años, no existe const de arrays
+    const currentYear= 2025;
+
+    //calcular la edad y guardarla en una constante
+    const ages= [
+        //edad1
+        currentYear-years[0],
+        currentYear-years[1],
+        currentYear-years[2]
+    ];
+
+    // revisar si es mayor de edad
+    if( ages[0]<18 && ages[1]<18 && ages[2]<18 ){
+        console.log("Todos son menores de edad");
+    } else{
+        console.log("Hay un cliente mayor de edad")
+    }
+
+
+}
+calculateAges([2007,1998,2020]);
+
+//🔟 Abby encontró un código de seguridad con tres números entre 100 y 999. Si el primer número es mayor que el segundo pero menor que el tercero, imprimirá "Código válido", si no, "Código incorrecto".
+
+const verifyCode=(code)=>{
+    if ( code[0]>code[1] && code[0]<code[2]){
+        console.log("Código válido")
+    } else{
+        console.log("Código inválido")
+    }
+}
+
+verifyCode([8,5,10]);
+
+//1️⃣1️⃣ Camila está organizando la lista de clientes de su tienda. Un cliente nuevo, "Lucía", llega y debe agregarse al final de la lista de clientes: ["Carlos", "María", "Sofía"]. Luego, debe mostrar cuántos clientes hay en la lista.
+
+const organizeClientList=()=>{
+    const currentList= ["Carlos", "María", "Sofía"];
+
+    currentList.push("Lucía");
+
+    console.log(currentList + " || El número de clientes es: ", currentList.length);
+}
+
+organizeClientList();
+
+//1️⃣2️⃣ Bego está revisando el stock de su tienda. Un producto aleatorio ya no está disponible y debe ser eliminado de la lista: ["Pan", "Leche", "Huevos"]. Después, debe mostrar cuántos productos quedan.
+
+const productStock =()=>{
+    const stockList= ["Pan", "Leche", "Huevos"];
+    const aleatoryProduct = Math.floor(Math.random()*stockList.length);
+
+    //crea una nueva lista como array para imprimir y luego contar cantidad
+    const newStockList=[
+        stockList.slice(0,aleatoryProduct),
+        stockList.slice(aleatoryProduct+1)
+    ];
+
+    console.log(newStockList + "|| Quedan disponibles " + newStockList.length + " productos" )
+    
+}
+
+productStock();
+
