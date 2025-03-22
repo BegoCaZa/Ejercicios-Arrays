@@ -145,22 +145,29 @@ if (aleatoryNumber3<50){
 // Cuenta original: 75 | Dividido: 25 | Precio final: 26 (Redondeado al número par más cercano)
 // Cuenta original: 93 | Dividido: 31 | Precio final: 32 (Redondeado al número par más cercano)
 
-// const splitBills =(bills)=>{
-//     //por cada cuenta
-//     const bill1= bills[0]/3;
-//     const bill1Final=
+const splitBills =(bills)=>{
+    //por cada cuenta
+    const bill1= bills[0]/3;
+    const bill1Final= 
+    (bill1%2!==0)? 
+    Math.round(bill1): bill1;
+    console.log("Cuenta Original: "+ bills[0] + "| Precio dividido: "+ bill1 + "| Precio final: " + bill1Final);
+    
+    const bill2= bills[1]/3;
+    const bill2Final= 
+    (bill2%2!==0)? 
+    Math.round(bill2): bill2;
+    console.log("Cuenta Original: "+ bills[1] + "| Precio dividido: "+ bill2 + "| Precio final: " + bill2Final);
 
-//     if (bill1%2!==0){
-//         bill1Final=Math.round(bill1);
-//     }else{
-//         bill1Final=bill1;
-//     }
+    const bill3= bills[2]/3;
+    const bill3Final= (bill3%2!==0)? 
+    Math.round(bill3): bill3;
+    console.log("Cuenta Original: "+ bills[2] + "| Precio dividido: "+ bill3 + "| Precio final: " + bill3Final);
+    
+} 
 
-//     console.log(bill1Final);
 
-// };
-
-// splitBills([120,75,93]);
+splitBills([120,75,94]); //probe con un numero no dividible entre 3
 
 //9️⃣ Macarena quiere calcular la edad de tres clientes. Recibe un array con tres años de nacimiento entre 1950 y 2010. Sabiendo que estamos en el año 2025, debe calcular la edad de cada uno y determinar si al menos uno es mayor de 18. Si hay al menos un cliente mayor de edad, imprimirá "Hay un cliente mayor de edad", si no, "Todos son menores de edad".
 
@@ -228,3 +235,54 @@ const productStock =()=>{
 
 productStock();
 
+//Sabrina está registrando pedidos en un restaurante. Un nuevo pedido, "Pizza", ha sido añadido en primer lugar a la lista de pedidos: ["Hamburguesa", "Ensalada"]. Luego, debe imprimir el primer pedido en la lista.
+
+const addToList =(newProduct)=>{
+    const currentList= ["Hamburguesa", "Ensalada"];
+
+    currentList.unshift(newProduct);
+
+    console.log(currentList);
+    
+}
+addToList("Pizza");
+
+//1️⃣4️⃣ Macarena está revisando las reservas de su hotel. Un cliente canceló su reserva en la lista: ["Habitación 101", "Habitación 203", "Habitación 305"]. Luego, debe mostrar cuántas reservas quedan.
+
+const reservationList=()=>{
+    const clientList= ["Habitación 101", "Habitación 203", "Habitación 305"];
+    const aleatoryClient = Math.floor(Math.random()*clientList.length);
+
+    const newClientList= [
+        clientList.slice(0,aleatoryClient),
+        clientList.slice(aleatoryClient+1)
+    ];
+
+    console.log(newClientList + " | Número de reservas :"+ newClientList.length);
+}
+
+reservationList(); //no me encanta como se imprime
+
+//1️⃣5️⃣ Abby encontró una lista de suministros en un refugio, por ejemplo: ["Botiquín", "Munición", "Agua", "Comida"]. Necesita asegurarse de que hay "Munición" y "Comida" disponibles. Si ambos están en la lista, debe mostrar "Suministros completos". Si falta alguno, debe mostrar "Suministros incompletos".
+
+const supplyListCheck=(supplies)=>{
+    supplies.includes("Munición") && supplies.includes("Comida") 
+    ? console.log("Suministros completos") 
+    : console.log("Suministros incompletos");
+}
+
+supplyListCheck(["Botiquín", "Munición", "Agua", "Comida"]);
+
+//1️⃣6️⃣ Camila está organizando una lista de espera. Un cliente importante, "Fernando", debe ser colocado en la primera posición de la lista: ["Ana", "Luis", "Elena"]. Luego, debe mostrar quién es el último en la lista.
+
+const organizeWaitList=()=> {
+    const currentWaitList = ["Ana", "Luis", "Elena","Julieta"];
+    currentWaitList.unshift("Fernando");
+
+    const lastCustomer = currentWaitList[currentWaitList.length-1];//le estoy diciendo que me diga el nombre de la ultima posicion en la lista, o sea 3
+
+    console.log (lastCustomer);
+    
+}
+
+organizeWaitList();
