@@ -150,18 +150,18 @@ const splitBills =(bills)=>{
     const bill1= bills[0]/3;
     const bill1Final= 
     (bill1%2!==0)? 
-    Math.round(bill1): bill1;
+    Math.round(bill1)+1: bill1;
     console.log("Cuenta Original: "+ bills[0] + "| Precio dividido: "+ bill1 + "| Precio final: " + bill1Final);
     
     const bill2= bills[1]/3;
     const bill2Final= 
     (bill2%2!==0)? 
-    Math.round(bill2): bill2;
+    Math.round(bill2)+1: bill2;
     console.log("Cuenta Original: "+ bills[1] + "| Precio dividido: "+ bill2 + "| Precio final: " + bill2Final);
 
     const bill3= bills[2]/3;
     const bill3Final= (bill3%2!==0)? 
-    Math.round(bill3): bill3;
+    Math.round(bill3)+1: bill3; //al numero redondeado impar, le suma 1 y lo vuelve par
     console.log("Cuenta Original: "+ bills[2] + "| Precio dividido: "+ bill3 + "| Precio final: " + bill3Final);
     
 } 
@@ -286,3 +286,57 @@ const organizeWaitList=()=> {
 }
 
 organizeWaitList();
+
+//1️⃣7️⃣ Bego tiene una caja registradora con pagos pendientes. Ha procesado el primer pago en la lista de pagos y debe eliminarlo: [15.50, 32.75, 8.99]. Luego, debe mostrar cuántos pagos quedan por procesar.
+
+const paymentProcessor =()=>{
+    const payments=[15.50, 32.75, 8.9];
+
+    payments.shift(payments[0]);
+
+    console.log("Pagos por procesar "+ payments.length) 
+}
+
+paymentProcessor();
+
+//1️⃣8️⃣ Sabrina está actualizando el menú de su restaurante. Un nuevo plato, "Pasta", ha sido agregado a la lista de platos: ["Sopa", "Carne asada"], y el último ha sido eliminado. Luego, debe mostrar la lista de platos.
+
+const updateMenuList =()=>{
+    const menu=["Sopa", "Carne asada"];
+
+    menu.unshift("Pasta"); //agrega pasta al principio
+    
+    menu.pop(); // no es necesario agregar [menu.lenght-1] por que .pop ya sabe cual es el ultimo elemento
+    
+    console.log(menu);
+
+}
+
+updateMenuList();
+
+//1️⃣9️⃣ Macarena está organizando un torneo. Un nuevo jugador, "Diego", se ha inscrito y reemplazará al último de la lista de jugadores: ["Hugo", "Mateo", "Álvaro"]. Luego, debe mostrar la cantidad total de jugadores inscritos.
+
+const playersEnrolled =()=>{
+    const players= ["Hugo", "Mateo", "Álvaro"];
+
+    players.pop();
+    players.push("Diego");
+
+    console.log(`${players.length} jugadores - lista de jugadores: ${players}`);
+}
+playersEnrolled();
+
+//2️⃣0️⃣ Abby está recibiendo señales de radio con mensajes en espera. Ha procesado el mensaje más antiguo de la lista: ["Atención, infectados cerca", "Necesitamos refuerzos", "Zona despejada"] y ha recibido uno nuevo: "Solicitamos medicinas". Luego, debe mostrar los mensajes uno por uno en console.log independientes.
+
+const processMessages =()=>{
+    const messages= ["Atención, infectados cerca", "Necesitamos refuerzos", "Zona despejada"];
+
+    messages.push("Solicitamos medicinas");
+
+    console.log(messages[0]);
+    console.log(messages[1]);
+    console.log(messages[2]);
+    console.log(messages[3]);
+} //DUDA esto si se cuantos mensajes hay.....pero si no lo se??
+
+processMessages();
