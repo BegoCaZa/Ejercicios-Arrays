@@ -116,21 +116,21 @@ const applyDiscount=()=>{
 
 //primer numero
     if (aleatoryNumber1<50){
-        console.log( price[0] + " | Número Generado " + aleatoryNumber1 + " |Precio final: " + (price[0]*.10) + " (10% de descuento)");
+        console.log( price[0] + " | Número Generado " + aleatoryNumber1 + " |Precio final: " + (price[0]-(price[0]*.10)) + " (10% de descuento)");
     } else if (aleatoryNumber1>=50) {
-        console.log( price[0] + " | Número Generado " + aleatoryNumber1 + " |Precio final: " + (price[0]*.20) + " (20% de descuento)")
+        console.log( price[0] + " | Número Generado " + aleatoryNumber1 + " |Precio final: " + (price[0]-(price[0]*.20)) + " (20% de descuento)")
 }
 //segundo numero
 if (aleatoryNumber2<50){
-    console.log( price[1] + " | Número Generado " + aleatoryNumber2 + " |Precio final: " + (price[1]*.10) + " (10% de descuento)");
+    console.log( price[1] + " | Número Generado " + aleatoryNumber2 + " |Precio final: " + (price[1]-(price[1]*.10)) + " (10% de descuento)");
 } else if (aleatoryNumber2>=50) {
-    console.log( price[1] + " | Número Generado " + aleatoryNumber2 + " |Precio final: " + (price[1]*.20) + " (20% de descuento)")
+    console.log( price[1] + " | Número Generado " + aleatoryNumber2 + " |Precio final: " + (price[1]-(price[1]*.20)) + " (20% de descuento)")
 }
 //tercer numero
 if (aleatoryNumber3<50){
-    console.log( price[2] + " | Número Generado " + aleatoryNumber3 + " |Precio final: " + (price[2]*.10) + " (10% de descuento)");
+    console.log( price[2] + " | Número Generado " + aleatoryNumber3 + " |Precio final: " + (price[2]-(price[2]*.10)) + " (10% de descuento)");
 } else if (aleatoryNumber3>=50) {
-    console.log( price[2] + " | Número Generado " + aleatoryNumber3 + " |Precio final: " + (price[2]*.20) + " (20% de descuento)")
+    console.log( price[2] + " | Número Generado " + aleatoryNumber3 + " |Precio final: " + (price[2]-(price[2]*.20)) + " (20% de descuento)")
 }
 
     }
