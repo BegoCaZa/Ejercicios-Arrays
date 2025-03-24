@@ -223,11 +223,12 @@ const productStock =()=>{
     const stockList= ["Pan", "Leche", "Huevos"];
     const aleatoryProduct = Math.floor(Math.random()*stockList.length);
 
-    //crea una nueva lista como array para imprimir y luego contar cantidad
+    //crea una nueva lista como array para imprimir
     const newStockList=[
-        stockList.slice(0,aleatoryProduct),
-        stockList.slice(aleatoryProduct+1)
-    ];
+        stockList.slice(0,aleatoryProduct), // un articulo que parte de la posición 0 al numero aleatorio,
+        stockList.slice(aleatoryProduct+1) // otro articulo que empieza desde la posicion siguiente del numero aleatorio hasta el final
+        //ej numero 2: [coge pan, quita leche, coge huevo]
+    ]; 
 
     console.log(newStockList + "|| Quedan disponibles " + newStockList.length + " productos" )
     
