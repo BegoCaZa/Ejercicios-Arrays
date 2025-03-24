@@ -13,7 +13,7 @@ whosInThisList("Julian")
 const isTheProductAvailable = (product)=> {
     const productList=["Camiseta","Pantalón","Gorra","Zapatos"];
     
-    productList.includes(product) ? console.log("El producto está en la posicón " + productList.indexOf(product)) : console.log("Producto no disponible")
+    productList.includes(product) ? console.log("El producto está en la posición " + productList.indexOf(product)) : console.log("Producto no disponible")
 }
 
 isTheProductAvailable("Gorra")
@@ -203,7 +203,7 @@ const verifyCode=(code)=>{
     }
 }
 
-verifyCode([8,5,10]);
+verifyCode([888,555,100]);
 
 //1️⃣1️⃣ Camila está organizando la lista de clientes de su tienda. Un cliente nuevo, "Lucía", llega y debe agregarse al final de la lista de clientes: ["Carlos", "María", "Sofía"]. Luego, debe mostrar cuántos clientes hay en la lista.
 
